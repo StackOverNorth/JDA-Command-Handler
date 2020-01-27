@@ -26,17 +26,16 @@ package com.github.stackovernorth.jda.commandhandler.api.command;
 
 import com.github.stackovernorth.jda.commandhandler.api.handler.CommandHandlerBuilder;
 import com.github.stackovernorth.jda.commandhandler.listener.CommandListener;
+import java.util.ArrayList;
 import net.dv8tion.jda.api.Permission;
 
-import java.util.ArrayList;
-
 /**
- * The core command class which is used to retrieve all information set via
- * {@link CommandHandlerBuilder} by the user. Using the builder will create a new
- * instance of this class, which upon creating, can be used to get the needed information.
+ * The core command class which is used to retrieve all information set via {@link CommandHandlerBuilder} by the user.
+ * Using the builder will create a new instance of this class, which upon creating, can be used to get the needed
+ * information.
  * <p>
- * Note that this class is not directly used to actually create a new command. These methods can be used when implementing
- * {@link CommandListener}.
+ * Note that this class is not directly used to actually create a new command. These methods can be used when
+ * implementing {@link CommandListener}.
  * </p>
  */
 public class Command {
@@ -44,7 +43,7 @@ public class Command {
   private CommandBuilder commandBuilder;
 
   public Command(CommandBuilder commandBuilder) {
-	this.commandBuilder = commandBuilder;
+    this.commandBuilder = commandBuilder;
   }
 
   /**
@@ -53,7 +52,7 @@ public class Command {
    * @return The command name as String
    */
   public String getCommandName() {
-	return commandBuilder.commandName;
+    return commandBuilder.commandName;
   }
 
   /**
@@ -66,7 +65,7 @@ public class Command {
    * @return The alias of the command name as String
    */
   public String getCommandAlias() {
-	return commandBuilder.commandAlias;
+    return commandBuilder.commandAlias;
   }
 
   /**
@@ -78,7 +77,7 @@ public class Command {
    * @return The description of the command
    */
   public String getCommandDescription() {
-	return commandBuilder.commandDescription;
+    return commandBuilder.commandDescription;
   }
 
   /**
@@ -90,7 +89,7 @@ public class Command {
    * @return A boolean whether bots are allowed to use the command
    */
   public Boolean getBotAllowance() {
-	return commandBuilder.botReply;
+    return commandBuilder.botReply;
   }
 
   /**
@@ -102,7 +101,7 @@ public class Command {
    * @return An {@link ArrayList} of allowed channels
    */
   public ArrayList<Long> getCommandChannels() {
-	return commandBuilder.commandChannels;
+    return commandBuilder.commandChannels;
   }
 
   /**
@@ -114,7 +113,7 @@ public class Command {
    * @return An {@link ArrayList} of needed {@link Permission}
    */
   public ArrayList<Permission> getCommandPermissions() {
-	return commandBuilder.commandPermissions;
+    return commandBuilder.commandPermissions;
   }
 
   /**
@@ -123,6 +122,6 @@ public class Command {
    * @return The class implementing the listener
    */
   public CommandListener getHandlerListener() {
-	return commandBuilder.handlerListener;
+    return commandBuilder.handlerListener;
   }
 }

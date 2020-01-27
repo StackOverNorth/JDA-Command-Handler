@@ -26,9 +26,8 @@ package com.github.stackovernorth.jda.commandhandler.api.command;
 
 import com.github.stackovernorth.jda.commandhandler.api.handler.CommandHandlerBuilder;
 import com.github.stackovernorth.jda.commandhandler.listener.CommandListener;
-import net.dv8tion.jda.api.Permission;
-
 import java.util.ArrayList;
+import net.dv8tion.jda.api.Permission;
 
 /**
  * This class is mandatory in order to build a functionally command.
@@ -38,12 +37,13 @@ import java.util.ArrayList;
  * </p>
  * <p>
  * Note that you need to add a valid {@link #commandName} and {@link #handlerListener} in order to be able to build the
- * command. When building, the builder will return a new instance of {@link Command} with all the information you provided.
+ * command. When building, the builder will return a new instance of {@link Command} with all the information you
+ * provided.
  * </p>
  * <p>
  * An short example on how to create a command.
- * <code>Command newCommand = new CommandBuilder("myCommand").addListener(new MyClassThatImplementsCommandListener()
- * .build();</code>
+ * <code>Command newCommand = new CommandBuilder("myCommand").addListener(new
+ * MyClassThatImplementsCommandListener() .build();</code>
  * </p>
  */
 public class CommandBuilder {
@@ -59,33 +59,35 @@ public class CommandBuilder {
   /**
    * Starts the building process of your new command.
    * <p>
-   * Note that you need to include a valid String containing your command name and a class that handles your command which
-   * implements {@link CommandListener}.
+   * Note that you need to include a valid String containing your command name and a class that handles your command
+   * which implements {@link CommandListener}.
    * </p>
    *
    * @param commandName
-   * 		A String which will be used as your command name in combination with the prefix set in
-   *        {@link CommandHandlerBuilder}
+   *     A String which will be used as your command name in combination with the prefix set in {@link
+   *     CommandHandlerBuilder}
    * @param handlerListener
-   * 		A class implementing {@link CommandListener} which handles the command
+   *     A class implementing {@link CommandListener} which handles the command
    *
    * @throws IllegalArgumentException
-   * 		If {@link #commandName} or {@link #handlerListener} is <code>null</code>
+   *     If {@link #commandName} or {@link #handlerListener} is
+   *     <code>null</code>
    */
   public CommandBuilder(String commandName, CommandListener handlerListener) {
-	if (commandName == null || handlerListener == null) {
-	  throw new IllegalArgumentException("The command name or listener must not be null!");
-	}
+    if (commandName == null || handlerListener == null) {
+      throw new IllegalArgumentException("The command name or listener must not be null!");
+    }
 
-	this.commandName = commandName;
-	this.handlerListener = handlerListener;
+    this.commandName = commandName;
+    this.handlerListener = handlerListener;
   }
 
   /**
    * Sets an alias for the command name.
    * <p>
-   * An alias is an alternate name for your command. Using an alias will allow you to use two names for the same
-   * output. E.g. <code>help</code> and <code>info</code> will display the same output when info is the alias of
+   * An alias is an alternate name for your command. Using an alias will allow you to use two names for the same output.
+   * E.g.
+   * <code>help</code> and <code>info</code> will display the same output when info is the alias of
    * <code>help</code>.
    * </p>
    * <p>
@@ -93,14 +95,14 @@ public class CommandBuilder {
    * </p>
    *
    * @param commandAlias
-   * 		A String which will be used as the alternate name of your command
+   *     A String which will be used as the alternate name of your command
    *
    * @return <code>this</code> for chaining
    */
   public CommandBuilder setAlias(String commandAlias) {
-	this.commandAlias = commandAlias;
+    this.commandAlias = commandAlias;
 
-	return this;
+    return this;
   }
 
   /**
@@ -110,14 +112,14 @@ public class CommandBuilder {
    * </p>
    *
    * @param commandDescription
-   * 		A String which will be used as the description of the command
+   *     A String which will be used as the description of the command
    *
    * @return <code>this</code> for chaining
    */
   public CommandBuilder setDescription(String commandDescription) {
-	this.commandDescription = commandDescription;
+    this.commandDescription = commandDescription;
 
-	return this;
+    return this;
   }
 
   /**
@@ -127,28 +129,28 @@ public class CommandBuilder {
    * </p>
    *
    * @param channelId
-   * 		The corresponding channelId as Long
+   *     The corresponding channelId as Long
    *
    * @return <code>this</code> for chaining
    */
   public CommandBuilder addAllowedChannel(long channelId) {
-	commandChannels.add(channelId);
+    commandChannels.add(channelId);
 
-	return this;
+    return this;
   }
 
   /**
    * Adds a single permission which is required to execute the command.
    *
    * @param permissionId
-   * 		A {@link Permission} which is required to execute the command
+   *     A {@link Permission} which is required to execute the command
    *
    * @return <code>this</code> for chaining
    */
   public CommandBuilder addPermission(Permission permissionId) {
-	commandPermissions.add(permissionId);
+    commandPermissions.add(permissionId);
 
-	return this;
+    return this;
   }
 
   /**
@@ -159,14 +161,14 @@ public class CommandBuilder {
    * </p>
    *
    * @param botReply
-   * 		Either <code>true</code> so that bots can use the command or <code>false</code> if they cannot
+   *     Either <code>true</code> so that bots can use the command or <code>false</code> if they cannot
    *
    * @return <code>this</code> for chaining
    */
   public CommandBuilder allowBotReply(boolean botReply) {
-	this.botReply = botReply;
+    this.botReply = botReply;
 
-	return this;
+    return this;
   }
 
   /**
@@ -175,6 +177,6 @@ public class CommandBuilder {
    * @return A new instance of {@link Command} with the newly created command
    */
   public Command build() {
-	return new Command(this);
+    return new Command(this);
   }
 }

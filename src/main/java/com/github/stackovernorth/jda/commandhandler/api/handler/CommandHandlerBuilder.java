@@ -26,9 +26,8 @@ package com.github.stackovernorth.jda.commandhandler.api.handler;
 
 import com.github.stackovernorth.jda.commandhandler.api.command.Command;
 import com.github.stackovernorth.jda.commandhandler.listener.CommandListener;
-import net.dv8tion.jda.api.JDA;
-
 import java.util.ArrayList;
+import net.dv8tion.jda.api.JDA;
 
 /**
  * This class is used to initialize the command handler.
@@ -47,17 +46,17 @@ public class CommandHandlerBuilder {
    * Starts the building process of the command handler.
    *
    * @param jdaObject
-   * 		Your {@link JDA} object which is mandatory for the handler to work
+   *     Your {@link JDA} object which is mandatory for the handler to work
    *
    * @throws IllegalArgumentException
-   * 		If your provided JDA object is null
+   *     If your provided JDA object is null
    */
   public CommandHandlerBuilder(JDA jdaObject) {
-	if (jdaObject == null) {
-	  throw new IllegalArgumentException("Your JDA object must not be null");
-	}
+    if (jdaObject == null) {
+      throw new IllegalArgumentException("Your JDA object must not be null");
+    }
 
-	this.jdaObject = jdaObject;
+    this.jdaObject = jdaObject;
   }
 
   /**
@@ -69,29 +68,28 @@ public class CommandHandlerBuilder {
    * </p>
    *
    * @param prefix
-   * 		A String which will be used as general prefix for the commands
+   *     A String which will be used as general prefix for the commands
    *
    * @return <code>this</code> for chaining
    */
   public CommandHandlerBuilder setPrefix(String prefix) {
-	this.prefix = prefix;
+    this.prefix = prefix;
 
-	return this;
+    return this;
   }
 
   /**
    * Adds a command with the corresponding class.
    *
    * @param commandClass
-   * 		The listener class which handles the output of the command and implements
-   *        {@link CommandListener}
+   *     The listener class which handles the output of the command and implements {@link CommandListener}
    *
    * @return <code>this</code> for chaining
    */
   public CommandHandlerBuilder addCommand(Command commandClass) {
-	commandList.add(commandClass);
+    commandList.add(commandClass);
 
-	return this;
+    return this;
   }
 
   /**
@@ -100,6 +98,6 @@ public class CommandHandlerBuilder {
    * @return A new instance of the command handler
    */
   public CommandHandler build() {
-	return new CommandHandler(this);
+    return new CommandHandler(this);
   }
 }

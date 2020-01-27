@@ -44,14 +44,14 @@ public interface CommandListener {
    * </p>
    *
    * @param sender
-   * 		The sender of the message
+   *     The sender of the message
    * @param channel
-   * 		The channel the message was sent from
+   *     The channel the message was sent from
    * @param message
-   * 		An object of the message
+   *     An object of the message
    * @param args
-   * 		An array of the message split at every whitespace and prefix plus command removed.
-   * 		Note that args can be empty if no other content was provided but the prefix and command.
+   *     An array of the message split at every whitespace and prefix plus command removed. Note that args can be empty
+   *     if no other content was provided but the prefix and command.
    */
   void onCommand(Member sender, TextChannel channel, Message message, String[] args);
 }

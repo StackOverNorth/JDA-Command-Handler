@@ -32,8 +32,9 @@ public class CommandHandler {
   private CommandHandlerBuilder commandHandlerBuilder;
 
   CommandHandler(CommandHandlerBuilder commandHandlerBuilder) {
-	this.commandHandlerBuilder = commandHandlerBuilder;
-	commandHandlerBuilder.jdaObject.addEventListener(new CommandHandlerListener(commandHandlerBuilder));
+    this.commandHandlerBuilder = commandHandlerBuilder;
+    commandHandlerBuilder.jdaObject
+        .addEventListener(new CommandHandlerListener(commandHandlerBuilder));
   }
 
   /**
@@ -43,9 +44,9 @@ public class CommandHandler {
    * </p>
    *
    * @param commandClass
-   * 		A class implementing {@link CommandListener} which handles the command
+   *     A class implementing {@link CommandListener} which handles the command
    */
   public void addCommand(Command commandClass) {
-	this.commandHandlerBuilder.commandList.add(commandClass);
+    this.commandHandlerBuilder.commandList.add(commandClass);
   }
 }
