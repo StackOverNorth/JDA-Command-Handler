@@ -14,10 +14,18 @@ This simple yet powerful library allows you to create commands with a few lines 
 ## And how does this fuzz work?
 In order to get this library to work, you only need to follow a few simple steps.
 1. Make sure you [downloaded and installed](https://github.com/DV8FromTheWorld/JDA#download) the latest version of the JDA wrapper to your project
-2. Download the [latest release](https://github.com/StackOverNorth/JDA-Command-Handler/releases/latest) of this
- library and add it to your project
+2. Add this library to your project either by [downloading the latest version](https://github.com/StackOverNorth/JDA-Command-Handler/releases/latest) and adding the jar to your project build
+ path or by adding a Maven dependency to your `pom.xml`
  
-Once you added the `jar` file to your project, you can start creating a new command handler.
+ **Maven:**
+ ```xml
+<dependency>
+  <groupId>com.github.stackovernorth</groupId>
+  <artifactId>JDA-Command-Handler</artifactId>
+  <version>1.0</version>
+</dependency>
+```
+Once you added the `jar` file or the Maven dependency to your project, you can start creating a new command handler.
 ```java
 CommandHandler commandHandler = new CommandHandlerBuilder(yourJDAObject)
     .setPrefix("p!")
@@ -29,7 +37,7 @@ The snippet above will only create a new handler with your `JDA` object (note th
 ## Adding commands example
 Adding new commands is just as easy as creating the handler. In order to easy create a new command, I also added a
  builder for commands. You may either use the `addCommand()` class when creating the `CommandHandler` or add it
-  afterwards. The following two examples will illustrate how both methods word (but as simplified as possible).
+  afterwards. The following two examples will illustrate how both methods work (but as simplified as possible).
   
 **Adding a command when building a `CommandHandler`:**
 ```java
