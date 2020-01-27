@@ -43,27 +43,27 @@ class CommandHandlerListener extends ListenerAdapter {
   private final CommandHandlerBuilder commandHandlerBuilder;
 
   CommandHandlerListener(CommandHandlerBuilder commandHandlerBuilder) {
-		this.commandHandlerBuilder = commandHandlerBuilder;
+    this.commandHandlerBuilder = commandHandlerBuilder;
   }
 
   @Override
   public void onGuildMessageReceived(@Nonnull GuildMessageReceivedEvent event) {
-		String[] args = event.getMessage().getContentRaw().split("\\s+");
-		String commandPrefix = commandHandlerBuilder.prefix;
-		if (!args[0].startsWith(commandPrefix)) {
-			// If the messages does not start with the set prefix, simply do nothing.
-			return;
-		}
+    String[] args = event.getMessage().getContentRaw().split("\\s+");
+    String commandPrefix = commandHandlerBuilder.prefix;
+    if (!args[0].startsWith(commandPrefix)) {
+      // If the messages does not start with the set prefix, simply do nothing.
+      return;
+    }
 
-		// If the message does start with the set prefix, we need to check whether the command was registered.
-		// If the command was registered, the command will be handled and checked in the handleCommand() method.
-		String command = args[0].replace(commandPrefix, "");
-		commandHandlerBuilder.commandList.forEach(c -> {
-			if (c.getCommandName().equals(command) || c.getCommandAlias().equals(command)) {
-				handleCommand(c, event.getMember(), event.getChannel(), event.getMessage(), args);
-			}
-		});
-	}
+    // If the message does start with the set prefix, we need to check whether the command was registered.
+    // If the command was registered, the command will be handled and checked in the handleCommand() method.
+    String command = args[0].replace(commandPrefix, "");
+    commandHandlerBuilder.commandList.forEach(c -> {
+      if (c.getCommandName().equals(command) || c.getCommandAlias().equals(command)) {
+        handleCommand(c, event.getMember(), event.getChannel(), event.getMessage(), args);
+      }
+    });
+  }
 
   /**
    * This method handles commands and redirects them to the corresponding handler class.
@@ -73,35 +73,35 @@ class CommandHandlerListener extends ListenerAdapter {
    * </p>
    *
    * @param command
-	 *     The command which is will be executed
-	 * @param sender
-	 *     The sender of the text message
-	 * @param channel
-	 *     The channel the text message was sent from
-	 * @param message
-	 *     The message as object
-	 * @param args
-	 *     An array of the message split at each whitespace
+   *     The command which is will be executed
+   * @param sender
+   *     The sender of the text message
+   * @param channel
+   *     The channel the text message was sent from
+   * @param message
+   *     The message as object
+   * @param args
+   *     An array of the message split at each whitespace
    */
   private void handleCommand(Command command, Member sender, TextChannel channel, Message message, String[] args) {
-		// If set hat bot's should not be allowed to use the command, do nothing.
-		if (!command.getBotAllowance() && message.getAuthor().isBot()) {
-			return;
-		}
+    // If set hat bot's should not be allowed to use the command, do nothing.
+    if (!command.getBotAllowance() && message.getAuthor().isBot()) {
+      return;
+    }
 
-		// Afterwards we need to check whether the message was sent from an allowed channel and whether the sender has the
-		// permissions to actually execute the command.
-		ArrayList<Long> allowedChannels = command.getCommandChannels();
-		if (!allowedChannels.isEmpty() && !allowedChannels.contains(channel.getIdLong())) {
-			return;
-		}
+    // Afterwards we need to check whether the message was sent from an allowed channel and whether the sender has the
+    // permissions to actually execute the command.
+    ArrayList<Long> allowedChannels = command.getCommandChannels();
+    if (!allowedChannels.isEmpty() && !allowedChannels.contains(channel.getIdLong())) {
+      return;
+    }
 
-		ArrayList<Permission> neededPermissions = command.getCommandPermissions();
-		if (!neededPermissions.isEmpty() && !sender.getPermissions().containsAll(neededPermissions)) {
-			return;
-		}
+    ArrayList<Permission> neededPermissions = command.getCommandPermissions();
+    if (!neededPermissions.isEmpty() && !sender.getPermissions().containsAll(neededPermissions)) {
+      return;
+    }
 
-		// Once we checked everything, the can redirect the command to the corresponding class.
-		command.getHandlerListener().onCommand(sender, channel, message, Arrays.copyOfRange(args, 1, args.length));
-	}
+    // Once we checked everything, the can redirect the command to the corresponding class.
+    command.getHandlerListener().onCommand(sender, channel, message, Arrays.copyOfRange(args, 1, args.length));
+  }
 }
