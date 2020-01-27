@@ -2,6 +2,7 @@
 )](https://github.com/StackOverNorth/JDA-Command-Handler/releases/latest)
 ![Issues](https://img.shields.io/github/issues/StackOverNorth/JDA-Command-Handler)
 ![Stars](https://img.shields.io/github/stars/StackOverNorth/JDA-Command-Handler)
+![Downloads](https://img.shields.io/github/downloads/StackOverNorth/JDA-Command-Handler/total?color=Light)
 [![License](https://img.shields.io/github/license/StackOverNorth/JDA-Command-Handler)](https://github.com/StackOverNorth/JDA-Command-Handler/blob/master/LICENSE)
 [![Discord](https://img.shields.io/discord/285623631042707457?color=%23738adb&label=%20&logo=Discord&logoColor=white
 )](https://discordapp.com/invite/cGsQvTs)
